@@ -1,0 +1,258 @@
+[
+  {
+    "_id": "iphonex_ir_silver_64",
+    "model": "iphonex_ir",
+    "remark": "ir",
+    "size": "58",
+    "color": "silver",
+    "capacity": "64",
+    "methods": [{
+      "worker": "tab",
+      "type": "irjson",
+      "region": "hk",
+      "model": "MQA62ZP/A",
+      "url": "https://reserve-prime.apple.com/HK/en_HK/reserve/iPhoneX/availability.json",
+      "irurl": "https://reserve-prime.apple.com/HK/zh_HK/reserve/iPhoneX/availability?channel=1"
+    }]
+  },
+  {
+    "_id": "iphonex_ir_silver_256",
+    "model": "iphonex_ir",
+    "remark": "ir",
+    "size": "58",
+    "color": "silver",
+    "capacity": "256",
+    "methods": [{
+      "worker": "tab",
+      "type": "irjson",
+      "region": "hk",
+      "model": "MQA92ZP/A",
+      "url": "https://reserve-prime.apple.com/HK/en_HK/reserve/iPhoneX/availability.json",
+      "irurl": "https://reserve-prime.apple.com/HK/zh_HK/reserve/iPhoneX/availability?channel=1"
+    }]
+  },
+  {
+    "_id": "iphonex_ir_space-gray_64",
+    "model": "iphonex_ir",
+    "remark": "ir",
+    "size": "58",
+    "color": "space-gray",
+    "capacity": "64",
+    "methods": [{
+      "worker": "tab",
+      "type": "irjson",
+      "region": "hk",
+      "model": "MQA52ZP/A",
+      "url": "https://reserve-prime.apple.com/HK/en_HK/reserve/iPhoneX/availability.json",
+      "irurl": "https://reserve-prime.apple.com/HK/zh_HK/reserve/iPhoneX/availability?channel=1"
+    }]
+  },
+  {
+    "_id": "iphonex_ir_space-gray_256",
+    "model": "iphonex_ir",
+    "remark": "ir",
+    "size": "58",
+    "color": "space-gray",
+    "capacity": "256",
+    "methods": [{
+      "worker": "tab",
+      "type": "irjson",
+      "region": "hk",
+      "model": "MQA82ZP/A",
+      "url": "https://reserve-prime.apple.com/HK/en_HK/reserve/iPhoneX/availability.json",
+      "irurl": "https://reserve-prime.apple.com/HK/zh_HK/reserve/iPhoneX/availability?channel=1"
+    }]
+  },
+  {
+    "_id": "iphonex_silver_64",
+    "model": "iphonex",
+    "size": "58",
+    "color": "silver",
+    "capacity": "64",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-x/5.8-inch-display-64gb-silver#00,10,20"
+    }]
+  },
+  {
+    "_id": "iphonex_silver_256",
+    "model": "iphonex",
+    "size": "58",
+    "color": "silver",
+    "capacity": "256",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-x/5.8-inch-display-256gb-silver#00,10,21"
+    }]
+  },
+  {
+    "_id": "iphonex_space-gray_64",
+    "model": "iphonex",
+    "size": "58",
+    "color": "space-gray",
+    "capacity": "64",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-x/5.8-inch-display-64gb-space-gray#01,10,20"
+    }]
+  },
+  {
+    "_id": "iphonex_space-gray_256",
+    "model": "iphonex",
+    "size": "58",
+    "color": "space-gray",
+    "capacity": "256",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-x/5.8-inch-display-256gb-space-gray#01,10,21"
+    }]
+  },
+  {
+    "_id": "iphone8_47_silver_64",
+    "model": "iphone8",
+    "size": "47",
+    "color": "silver",
+    "capacity": "64",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/4.7-inch-display-64gb-silver#00,10,20"
+    }]
+  },
+  {
+    "_id": "iphone8_47_silver_256",
+    "model": "iphone8",
+    "size": "47",
+    "color": "silver",
+    "capacity": "256",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/4.7-inch-display-256gb-silver#00,10,21"
+    }]
+  },
+  {
+    "_id": "iphone8_47_gold_64",
+    "model": "iphone8",
+    "size": "47",
+    "color": "gold",
+    "capacity": "64",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/4.7-inch-display-64gb-gold#00,11,20"
+    }]
+  },
+  {
+    "_id": "iphone8_47_gold_256",
+    "model": "iphone8",
+    "size": "47",
+    "color": "gold",
+    "capacity": "256",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/4.7-inch-display-256gb-gold#00,11,21"
+    }]
+  },
+  {
+    "_id": "iphone8_47_space-gray_64",
+    "model": "iphone8",
+    "size": "47",
+    "color": "space-gray",
+    "capacity": "64",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/4.7-inch-display-64gb-space-gray#00,12,20"
+    }]
+  },
+  {
+    "_id": "iphone8_47_space-gray_256",
+    "model": "iphone8",
+    "size": "47",
+    "color": "space-gray",
+    "capacity": "256",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/4.7-inch-display-256gb-space-gray#00,12,21"
+    }]
+  },
+  {
+    "_id": "iphone8_55_silver_64",
+    "model": "iphone8",
+    "size": "55",
+    "color": "silver",
+    "capacity": "64",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/5.5-inch-display-64gb-silver#01,10,20"
+    }]
+  },
+  {
+    "_id": "iphone8_55_silver_256",
+    "model": "iphone8",
+    "size": "55",
+    "color": "silver",
+    "capacity": "256",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/5.5-inch-display-256gb-silver#01,10,21"
+    }]
+  },
+  {
+    "_id": "iphone8_55_gold_64",
+    "model": "iphone8",
+    "size": "55",
+    "color": "gold",
+    "capacity": "64",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/5.5-inch-display-64gb-gold#01,11,20"
+    }]
+  },
+  {
+    "_id": "iphone8_55_gold_256",
+    "model": "iphone8",
+    "size": "55",
+    "color": "gold",
+    "capacity": "256",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/5.5-inch-display-256gb-gold#01,11,21"
+    }]
+  },
+  {
+    "_id": "iphone8_55_space-gray_64",
+    "model": "iphone8",
+    "size": "55",
+    "color": "space-gray",
+    "capacity": "64",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/5.5-inch-display-64gb-space-gray#01,12,20"
+    }]
+  },
+  {
+    "_id": "iphone8_55_space-gray_256",
+    "model": "iphone8",
+    "size": "55",
+    "color": "space-gray",
+    "capacity": "256",
+    "methods": [{
+      "worker": "tab",
+      "type": "store",
+      "url": "iphone-8/5.5-inch-display-256gb-space-gray#01,12,21"
+    }]
+  }
+]

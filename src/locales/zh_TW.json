@@ -1,0 +1,94 @@
+{
+  "app": {
+    "name": "iPhone 開售提示"
+  },
+  "phoneStatusOverview": {
+    "edit": "修改",
+    "about": "關於",
+    "statusLabel": "啟用/停用",
+    "promptChoose": "你尚未選擇任何 iPhone，請點擊上方 修改 按鈕添加你想接收提示的 iPhone 型號",
+    "promptDisclaimer": "請注意，本插件所提供的資訊有可能並非實時及出現不正確的情況。在任何情況下，插件開發者及其版權持有者均不會為任何插件造成的影響負責。請務必細閱 關於 頁面內的免責條款。"
+  },
+  "monitorListSetting": {
+    "title": "選擇想接收通知的 iPhone 型號",
+    "save": "儲存",
+    "syncFailedMessage": "儲存失敗!"
+  },
+  "about": {
+    "title": "關於",
+    "language": {
+      "options": {
+        "en": "English",
+        "zh_tw": "繁體中文",
+        "zh_hk": "粵語"
+      }
+    },
+    "introduction": {
+      "title": "關於本插件",
+      "content": "iPhone 開售提示是一個監察 iPhone 開售情況的 Chrome 插件。當你選擇的 iPhone 型號開售時，插件會以瀏覽器提示通知你."
+    },
+    "disclaimer": {
+      "title": "免責聲明 (只提供英文版本)",
+      "content": "Please be aware that you may find the information provided by the extension inaccurate and incorrect.",
+      "mit": "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    },
+    "attribution": {
+      "title": "嗚謝",
+      "flaticon": "圖示由 ${SMASHICONS} 於 ${FLATICON} 平台上發佈"
+    }
+  },
+  "status": {
+    "enabled": "已啟用",
+    "disabled": "已停用",
+    "error": "錯誤"
+  },
+  "phoneStatus": {
+    "unavailable": "未開售",
+    "inStock": "開售中",
+    "pending": "處理中"
+  },
+  "iphone": {
+    "model": {
+      "iphone8": "iPhone 8",
+      "iphonex": "iPhone X",
+      "iphonex_ir": "iPhone X"
+    },
+    "remark": {
+      "ir": "經 iReserve 預約"
+    },
+    "size": {
+      "47": "4.7吋",
+      "55": "5.5吋",
+      "58": "5.8吋"
+    },
+    "color": {
+      "silver": "銀色",
+      "space-gray": "太空灰",
+      "gold": "金色"
+    },
+    "capacity":{
+      "64": "64 GB",
+      "256": "256 GB"
+    }
+  },
+  "method": {
+    "store": {
+      "notification": {
+        "title": "你選擇的 iPhone 現在開售中!",
+        "message": "你想要的 ${PHONE_NAME} 已經於 Apple Online Store 上開售! 請點擊這裡前往 Apple Online Store"
+      }
+    },
+    "irjson": {
+      "notification": {
+        "title": "你選擇的 iPhone 現在開售中!",
+        "message": "你想要的 ${PHONE_NAME} 現在已經接受 iReserve 預約! 請點擊這裡前往 iReserve 網站"
+      }
+    }
+  },
+  "error": {
+    "notification": {
+      "title": "iPhone 開售提示插件發生錯誤",
+      "message:": "我們偵測到iPhone 開售提示插件發生內部錯誤。 請嘗試點擊插件圖示重啟插件。 如問題持續, 請與發開者聯絡。"
+    }
+  }
+}

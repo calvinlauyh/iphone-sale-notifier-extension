@@ -1,0 +1,94 @@
+{
+  "app": {
+    "name": "iPhone Sale Notifier"
+  },
+  "phoneStatusOverview": {
+    "edit": "EDIT",
+    "about": "ABOUT",
+    "statusLabel": "Enable/Disable",
+    "promptChoose": "You do not have any iPhone under monitor. Click EDIT button above and choose the iPhone models you want to keep track with.",
+    "promptDisclaimer": "Please be aware that the information provided by the extension may be inaccurate and incorrect. IN NO EVENT SHALL THE AUTHORS AND THE COPYRIGHT OWNERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY. For details, please visit the disclaimer section in the ABOUT page."
+  },
+  "monitorListSetting": {
+    "title": "Select iPhone to monitor",
+    "save": "SAVE"
+  },
+  "about": {
+    "title": "About",
+    "language": {
+      "options": {
+        "en": "English",
+        "zh_tw": "繁體中文",
+        "zh_hk": "粵語"
+      }
+    },
+    "introduction": {
+      "title": "ABOUT THE EXTENSION",
+      "content": "iPhone Sale Notifier is a Chrome extension to help you keep track of iPhone stock status and notify you by browser notification when it is available."
+    },
+    "disclaimer": {
+      "title": "DISCLAIMER",
+      "content": "Please be aware that you may find the information provided by the extension inaccurate and incorrect.",
+      "mit": "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    },
+    "attribution": {
+      "title": "ATTRIBUTION",
+      "flaticon": "Icon made by ${SMASHICONS} from ${FLATICON}"
+    }
+  },
+  "status": {
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "error": "Error"
+  },
+  "phoneStatus": {
+    "unavailable": "Sold Out",
+    "inStock": "In Stock",
+    "pending": "Pending"
+  },
+  "iphone": {
+    "model": {
+      "iphone8": "iPhone 8",
+      "iphonex": "iPhone X",
+      "iphonex_ir": "iPhone X"
+    },
+    "remark": {
+      "ir": "via iReseve"
+    },
+    "size": {
+      "47": "4.7\"",
+      "55": "5.5\"",
+      "58": "5.8\""
+    },
+    "color": {
+      "silver": "Silver",
+      "space-gray": "Space Gray",
+      "gold": "Gold"
+    },
+    "capacity":{
+      "64": "64 GB",
+      "256": "256 GB"
+    }
+  },
+  "method": {
+    "store": {
+      "notification": {
+        "title": "Your iPhone is available now!",
+        "message": "Your wished ${PHONE_NAME} is now available on Apple Online Store! Click here to go to the Apple Online Store"
+      }
+    },
+    "irjson": {
+      "notification": {
+        "title": "Your iPhone is available now!",
+        "message": "Your wished ${PHONE_NAME} is now available! Click here to go to the iReserve website"
+      }
+    }
+  },
+  "error": {
+    "notification": {
+      "title": "iPhone In Stock Notifier Crash Report",
+      "message:": "We have experienced an internal error. Please click here to restart the extension. If the problem persisits, please contact the extension developer."
+    },
+    "syncFailedMessage": "Save failed!"
+  }
+}
