@@ -17,10 +17,11 @@ import {
 
 /**
  * Start the worker tab to prepare and execute jobs
+ * @async
  * @param  {Integer} tabId Id of the tab to start
  */
-function startWorkerTab(tabId) {
-  chromep.tabs.update(tabId, {
+async function startWorkerTab(tabId) {
+  await chromep.tabs.update(tabId, {
     url: getWorkerPageURL()
   });
 }
@@ -47,7 +48,7 @@ async function createWorkerTab(appEnv, startWork = true) {
   });
 
   if (startWork) {
-    startWorkerTab(tabId);
+    await startWorkerTab(tabId);
   }
 
   return tab;
@@ -221,7 +222,7 @@ async function handleTabStoreJob(appEnv, tabId, job) {
       }
     }
 
-    startWorkerTab(tabId);
+    await startWorkerTab(tabId);
   } catch(e) {
     // Whenever an error occurs, try to restart the worker tab
     restartWorkerTab(appEnv, tabId);
@@ -298,7 +299,7 @@ async function handleTabIRJsonJob(appEnv, tabId, job) {
       }
     }
 
-    startWorkerTab(tabId);
+    await startWorkerTab(tabId);
   } catch(e) {
     // Whenever an error occurs, try to restart the worker tab
     restartWorkerTab(appEnv, tabId);
@@ -374,46 +375,35 @@ const handleRuntimeMessage = (appEnv) => async (request, sender, sendResponse) =
       try {
         appEnv.set('monitorList', request.monitorList);
         appEnv.set('phoneStatus', newPhoneStatus);
+        // Re-initialize the background
+        await init(appEnv);
         sendResponse(true);
       } catch(e) {
         sendResponse(false);
-        throw e;
-      }
-
-      // Re-initialize the background
-      try{
-        await init(appEnv);
-      } catch(e) {
         console.error(e);
       }
       break;
     case STATUS_SET:
       try {
         appEnv.set('status', request.status);
+        // Re-initialize the background
+        await init(appEnv);
         sendResponse(true);
       } catch(e) {
         sendResponse(false);
-        throw e;
-      }
-
-      // Re-initialize the background
-      try{
-        await init(appEnv);
-      } catch(e) {
         console.error(e);
       }
       break;
     case LANGUAGE_SET:
       try {
         appEnv.set('language', request.language);
+        // Change language
+        i18n.changeLanguage(request.language);
         sendResponse(true);
       } catch(e) {
         sendResponse(false);
         throw e;
       }
-
-      // Change language
-      i18n.changeLanguage(request.language);
       break;
     default:
       console.error(`Unknown runtime message "${request.type}"`)
@@ -481,6 +471,10 @@ function findWorkerTabsFromAppEnv(appEnv) {
  * @param  {AppEnv} appEnv AppEnv object
  */
 async function init(appEnv) {
+  // Only one instance can initialize the application
+  if (appEnv.get('initializing')) {
+    return Promise.reject('Only one instace can initialize the application at a time');
+  }
   // Try to repair any abnormality in localStorage items
   appEnv.repair();
 

@@ -118,6 +118,7 @@ export default () => {
   repair();
 
   _data = {
+    initializing: false, // Whether the application is handling a message
     tabRuntime: {
       jobList: [],       // List of available jobs
       nextJobIdx: 0,     // Next job index
