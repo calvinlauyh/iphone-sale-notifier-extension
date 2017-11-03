@@ -361,53 +361,61 @@ const handleTabsRemove = (appEnv) => async (tabId, removeInfo) => {
  * A listener for handling runtime message from other pages
  * @param  {AppEnv} appEnv AppEnv object
  */
-const handleRuntimeMessage = (appEnv) => async (request, sender, sendResponse) => {
-  switch(request.type) {
-    case MONITORLIST_SET:
-      const newPhoneStatus = request.monitorList.reduce((accuDict, id) => {
-        accuDict[id] = {
-          status: constant.PHONESTATUS.PENDING,
-          inStockSince: 0,
-          url: ''
-        };
-        return accuDict;
-      }, {});
-      try {
-        appEnv.set('monitorList', request.monitorList);
-        appEnv.set('phoneStatus', newPhoneStatus);
-        // Re-initialize the background
-        await init(appEnv);
-        sendResponse(true);
-      } catch(e) {
-        sendResponse(false);
-        console.error(e);
-      }
-      break;
-    case STATUS_SET:
-      try {
-        appEnv.set('status', request.status);
-        // Re-initialize the background
-        await init(appEnv);
-        sendResponse(true);
-      } catch(e) {
-        sendResponse(false);
-        console.error(e);
-      }
-      break;
-    case LANGUAGE_SET:
-      try {
-        appEnv.set('language', request.language);
-        // Change language
-        i18n.changeLanguage(request.language);
-        sendResponse(true);
-      } catch(e) {
-        sendResponse(false);
-        throw e;
-      }
-      break;
-    default:
-      console.error(`Unknown runtime message "${request.type}"`)
-  }
+const handleRuntimeMessage = (appEnv) => (request, sender, sendResponse) => {
+  // Chrome request the runtime message handler to return true if the response
+  // is asynchronous. So we cannot use an async function directly here, but to
+  // wrap it inside a normal function
+  (async () => {
+    switch(request.type) {
+      case MONITORLIST_SET:
+        const newPhoneStatus = request.monitorList.reduce((accuDict, id) => {
+          accuDict[id] = {
+            status: constant.PHONESTATUS.PENDING,
+            inStockSince: 0,
+            url: ''
+          };
+          return accuDict;
+        }, {});
+        try {
+          appEnv.set('monitorList', request.monitorList);
+          appEnv.set('phoneStatus', newPhoneStatus);
+          // Re-initialize the background
+          await init(appEnv);
+          sendResponse(true);
+        } catch(e) {
+          sendResponse(false);
+          console.error(e);
+        }
+        break;
+      case STATUS_SET:
+        try {
+          appEnv.set('status', request.status);
+          // Re-initialize the background
+          await init(appEnv);
+          sendResponse(true);
+        } catch(e) {
+          sendResponse(false);
+          console.error(e);
+        }
+        break;
+      case LANGUAGE_SET:
+        try {
+          appEnv.set('language', request.language);
+          // Change language
+          i18n.changeLanguage(request.language);
+          sendResponse(true);
+        } catch(e) {
+          sendResponse(false);
+          throw e;
+        }
+        break;
+      default:
+        console.error(`Unknown runtime message "${request.type}"`)
+    }
+  })();
+
+  // Tell Chrome that I wish to send a response asynchronously
+  return true;
 };
 
 /**
