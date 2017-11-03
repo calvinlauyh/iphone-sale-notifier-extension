@@ -16,6 +16,17 @@ export default class PhoneListItem extends Component {
     onClick(item);
   }
 
+  getColorCode(colorStr) {
+    switch(colorStr) {
+      case 'silver':
+        return '#D8D9DC';
+      case 'gold':
+        return '#F2DDD1';
+      case 'space-gray':
+        return '#1D1D1D';
+    }
+  }
+
   render() {
     const {
       t,
@@ -42,7 +53,7 @@ export default class PhoneListItem extends Component {
           <div style={styles.infoContainer}>
             <div style={styles.colorContainer}>
               <div style={styles.colorCircleContainer}>
-                <div style={[styles.colorCircle, {backgroundColor: color}]}></div>
+                <div style={[styles.colorCircle, {backgroundColor: this.getColorCode(color)}]}></div>
               </div>
               <div style={styles.colorText}>{t(`iphone.color.${color}`)}</div>
             </div>
