@@ -6,6 +6,7 @@ import Radium from 'radium';
 import constant from 'constant';
 import iPhoneDb from 'db/iPhoneDb';
 import { buildOverview } from 'popup/utils/phoneStatusUtils';
+import chromep from 'library/chrome-promise';
 
 import Navbar from 'popup/components/Navbar';
 import PhoneList from 'popup/components/PhoneList';
@@ -85,6 +86,16 @@ class PhoneStatusOverview extends Component {
     this.props.syncEnable(enable);
   }
 
+  handlePhoneClick = (item) => {
+    if (item.status === constant.PHONESTATUS.INSTOCK) {
+      chromep.tabs.create({
+        active: true,
+        selected: true,
+        url: item.url
+      });
+    }
+  }
+
   componentDidMount() {
     this.initEnable();
     this.initMonitorList();
@@ -98,11 +109,13 @@ class PhoneStatusOverview extends Component {
     clearInterval(this.updateTimer);
   }
 
-  renderModelStatus(modelStatus) {
+  renderModelStatus = (modelStatus) => {
+    console.log(this);
     return (
       <PhoneList.Model
         key={modelStatus[0].model}
         items={modelStatus}
+        onItemClick={this.handlePhoneClick}
       />
     );
   }
