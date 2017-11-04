@@ -6,7 +6,12 @@ import AppEnv from './AppEnv';
 import i18n from './i18n';
 const t = i18n.t.bind(i18n);
 
-import { getWorkerPageURL, getAppleStoreURL, closeAllWorkerTabs } from './utils';
+import {
+  getWorkerPageURL,
+  getAppleStoreURL,
+  getAppleStoreJsonURL,
+  closeAllWorkerTabs
+} from './utils';
 import { getPhoneName } from 'utils/phoneUtils';
 
 import {
@@ -231,6 +236,87 @@ async function handleTabStoreJob(appEnv, tabId, job) {
 }
 
 /**
+ * Handle a tab update related to Store JSON job
+ * @param  {AppEnv}  appEnv AppEnv object
+ * @param  {Integer} tabId  The tab id of the updated worker tab
+ * @param  {Object}  job    The job the worker tab is running
+ */
+async function handleTabStoreJsonJob(appEnv, tabId, job) {
+  const phoneId = job['phoneId'];
+  try {
+    // Check if the iPhone in Apple Store is available
+    const jsonData = await chromep.tabs.executeScript(tabId, {
+      code: `document.body.innerText`
+    });
+
+    // Update the phone status
+    let newPhoneStatus;
+    let available = false;
+    // Parse the JSON response
+    try {
+      const jsonResponse = JSON.parse(jsonData);
+      let current = jsonResponse;
+      ['body', 'content', 'deliveryMessage', job.model, 'deliveryOptionMessages', 0].forEach((key) => {
+        if (typeof current[key] === 'undefined') {
+          throw new Error(`Key ${key} not found in JSON response`);
+        }
+        current = current[key];
+      });
+      if (current !== 'Currently Unavailable') {
+        available = true;
+      }
+    } catch(e) {/*Simply consider the model is unavailable*/}
+
+    if (available) {
+      // The iPhone is available in IR now
+      const {
+        inStockSince,
+        url
+      } = appEnv.get(`phoneStatus.${phoneId}`);
+
+      newPhoneStatus = {
+        status: constant.PHONESTATUS.INSTOCK,
+        inStockSince: inStockSince === 0? Date.now(): inStockSince,
+        url: job.url
+      };
+      appEnv.set(`phoneStatus.${phoneId}`, newPhoneStatus);
+      // If the phone is not available before, send a browser notification
+      if (inStockSince === 0 || url !== job.url) {
+        const notificationId = await chromep.notifications.create(notificationId, {
+          type: 'basic',
+          iconUrl: 'src/images/icons/instock64.png',
+          title: t('method.store.notification.title'),
+          message: t('method.store.notification.message')
+            .replace('${PHONE_NAME}', getPhoneName(t, iPhoneDb.findById(phoneId)))
+        });
+        // on notification click handler
+        appEnv.set(`notification.${notificationId}`, {
+          type: 'url',
+          url: job.url
+        });
+      }
+    } else {
+      const url = appEnv.get(`phoneStatus.${phoneId}.url`);
+      // Only update when the previous availability is from this method
+      if (url === '' || url === job.irurl) {
+        newPhoneStatus = {
+          status: constant.PHONESTATUS.UNAVAILABLE,
+          inStockSince: 0,
+          url: ''
+        };
+        appEnv.set(`phoneStatus.${phoneId}`, newPhoneStatus);
+      }
+    }
+
+    await startWorkerTab(tabId);
+  } catch(e) {
+    // Whenever an error occurs, try to restart the worker tab
+    restartWorkerTab(appEnv, tabId);
+    console.error(e);
+  }
+}
+
+/**
  * Handle a tab update related to IR JSON job
  * @param  {AppEnv}  appEnv AppEnv object
  * @param  {Integer} tabId  The tab id of the updated worker tab
@@ -333,6 +419,8 @@ const handleTabsUpdate = (appEnv) => async (tabId, changeInfo, tab) => {
   if (currentJob && tab.url === currentJob.url) {
     if (currentJob.type === 'store') {
       handleTabStoreJob(appEnv, tabId, currentJob);
+    } else if (currentJob.type === 'storejson') {
+      handleTabStoreJsonJob(appEnv, tabId, currentJob);
     } else if (currentJob.type === 'irjson') {
       handleTabIRJsonJob(appEnv, tabId, currentJob);
     }
@@ -516,6 +604,8 @@ async function init(appEnv) {
         let url = method.url;
         if (method.type === 'store') {
           url = `${getAppleStoreURL()}${method.url}`;
+        } else if (method.type === 'storejson') {
+          url = `${getAppleStoreJsonURL()}${method.model}`;
         }
         tabJobList.push(Object.assign({}, method, {
           phoneId: phone._id,

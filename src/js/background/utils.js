@@ -134,10 +134,16 @@ export async function findWorkerTab() {
   return Promise.reject(new Error(constant.ERR_WORKERTAB_NOTFOUND));
 };
 
-// Get Apple store URL base on region option
-export function getAppleStoreURL(region) {
+// Get Apple store URL base
+export function getAppleStoreURL() {
   // TODO: support more region in the future
   return 'https://www.apple.com/hk/shop/buy-iphone/';
+}
+
+// Get Apple store JSON URL
+export function getAppleStoreJsonURL() {
+  // TODO: support more region in the future
+  return 'https://www.apple.com/hk/shop/delivery-message?parts.0=';
 }
 
 export function logError(error) {
