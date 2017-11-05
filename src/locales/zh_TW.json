@@ -25,7 +25,7 @@
     },
     "introduction": {
       "title": "關於本插件",
-      "content": "iPhone 開售提示是一個監察 iPhone 開售情況的 Chrome 插件。當你選擇的 iPhone 型號開售時，插件會以瀏覽器提示通知你."
+      "content": "iPhone 開售提示是一個監察 iPhone 香港開售情況的 Chrome 插件。當你選擇的 iPhone 型號開售時，插件會以瀏覽器提示通知你。"
     },
     "disclaimer": {
       "title": "免責聲明 (只提供英文版本)",
@@ -50,6 +50,7 @@
   "iphone": {
     "model": {
       "iphone8": "iPhone 8",
+      "iphone8plus": "iPhone 8 Plus",
       "iphonex": "iPhone X",
       "iphonex_ir": "iPhone X"
     },

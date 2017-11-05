@@ -24,7 +24,7 @@
     },
     "introduction": {
       "title": "ABOUT THE EXTENSION",
-      "content": "iPhone Sale Notifier is a Chrome extension to help you keep track of iPhone stock status and notify you by browser notification when it is available."
+      "content": "iPhone Sale Notifier is a Chrome extension to help you keep track of iPhone stock status in Hong Kong and notify you by browser notification when it is available."
     },
     "disclaimer": {
       "title": "DISCLAIMER",
@@ -49,6 +49,7 @@
   "iphone": {
     "model": {
       "iphone8": "iPhone 8",
+      "iphone8plus": "iPhone 8 Plus",
       "iphonex": "iPhone X",
       "iphonex_ir": "iPhone X"
     },
