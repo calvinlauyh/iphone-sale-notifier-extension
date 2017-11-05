@@ -207,7 +207,7 @@ async function handleTabStoreJob(appEnv, tabId, job) {
       newPhoneStatus = {
         status: constant.PHONESTATUS.INSTOCK,
         inStockSince: inStockSince === 0? Date.now(): inStockSince,
-        url: job.url
+        url: job.storeUrl
       };
       appEnv.set(`phoneStatus.${phoneId}`, newPhoneStatus);
       // If the phone is not available before, send a browser notification
@@ -222,7 +222,7 @@ async function handleTabStoreJob(appEnv, tabId, job) {
         // on notification click handler
         appEnv.set(`notification.${notificationId}`, {
           type: 'url',
-          url: job.url
+          url: job.storeUrl
         });
       }
     }
@@ -277,11 +277,11 @@ async function handleTabStoreJsonJob(appEnv, tabId, job) {
       newPhoneStatus = {
         status: constant.PHONESTATUS.INSTOCK,
         inStockSince: inStockSince === 0? Date.now(): inStockSince,
-        url: job.url
+        url: job.storeUrl
       };
       appEnv.set(`phoneStatus.${phoneId}`, newPhoneStatus);
       // If the phone is not available before, send a browser notification
-      if (inStockSince === 0 || url !== job.url) {
+      if (inStockSince === 0 || url !== job.storeUrl) {
         const notificationId = await chromep.notifications.create(notificationId, {
           type: 'basic',
           iconUrl: 'src/images/icons/instock64.png',
@@ -292,13 +292,13 @@ async function handleTabStoreJsonJob(appEnv, tabId, job) {
         // on notification click handler
         appEnv.set(`notification.${notificationId}`, {
           type: 'url',
-          url: job.url
+          url: job.storeUrl
         });
       }
     } else {
       const url = appEnv.get(`phoneStatus.${phoneId}.url`);
       // Only update when the previous availability is from this method
-      if (url === '' || url === job.irurl) {
+      if (url === '' || url === job.storeUrl) {
         newPhoneStatus = {
           status: constant.PHONESTATUS.UNAVAILABLE,
           inStockSince: 0,
@@ -602,14 +602,17 @@ async function init(appEnv) {
     phone.methods.forEach((method) => {
       if (method.worker === 'tab') {
         let url = method.url;
+        let storeUrl = method.url;
         if (method.type === 'store') {
-          url = `${getAppleStoreURL()}${method.url}`;
+          url = storeUrl = `${getAppleStoreURL()}${method.url}`;
         } else if (method.type === 'storejson') {
           url = `${getAppleStoreJsonURL()}${method.model}`;
+          storeUrl = `${getAppleStoreURL()}${method.url}`;
         }
         tabJobList.push(Object.assign({}, method, {
           phoneId: phone._id,
-          url
+          url,
+          storeUrl
         }));
       }
     });
