@@ -1,9 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "iPhone Sale Notifier Extension",
-  "version": "1.0.1",
+  "name": "__MSG_appName__",
+  "version": "1.0.4",
+  "default_locale": "en",
 
-  "description": "Help you keep track of iPhone stock status and notify you by browser notification when it is available",
+  "description": "__MSG_appDesc__",
   "icons": {
     "16": "src/images/icons/default16.png",
     "24": "src/images/icons/default24.png",

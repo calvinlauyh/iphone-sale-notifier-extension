@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "iPhone Sale Notifier",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Help you keep track of iPhone stock status in Hong Kong and notify you by browser notification when it is available.",
+    "description": "The description of the application, displayed in the web store."
+  }
+}
