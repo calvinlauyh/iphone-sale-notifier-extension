@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "iPhone 開售提示",
+    "message": "非官方 iPhone 開售提示",
     "description": "The title of the application, displayed in the web store."
   },
   "appDesc": {
-    "message": "監察 iPhone 香港開售情況的 Chrome 插件。當你選擇的 iPhone 型號開售時，插件會以瀏覽器提示通知你。",
+    "message": "監察 iPhone 在香港開售情況的非官方插件。當你選擇的 iPhone 型號開售時，插件會以瀏覽器提示通知你。",
     "description": "The description of the application, displayed in the web store."
   }
 }
