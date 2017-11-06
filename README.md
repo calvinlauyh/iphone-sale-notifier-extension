@@ -1,9 +1,10 @@
 # Unofficial iPhone Sale Notifier Extension
 
-**Unofficial iPhone Sale Notifier Extension** is an unofficial Chrome extension to help you keep track of iPhone stock status and notify you by browser notification when it is available. Right now it only supports the Hong Kong Apple Online Store.
+**iPhone Sale Notifier** is an unofficial Chrome extension to help you keep track of iPhone stock status and notify you by browser notification when it is available. Right now it only supports the Hong Kong Apple Online Store.
 
 You can install the extension on [Chrome web store](https://chrome.google.com/webstore/detail/onggnokegmdgdgipnpbaefmgbhkkhcfa)
 
+## Features
 - Keep track of iPhone 8 and iPhone X stock status
 - Support Apple Online Store and iReserve for iPhone X
 - Notify by browser extension
