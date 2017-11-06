@@ -7,6 +7,7 @@ import { translate } from 'react-i18next';
 import Radium from 'radium';
 import IonIcon from 'react-ionicons';
 import constant from 'constant';
+import chromep from 'library/chrome-promise';
 
 import Navbar from 'popup/components/Navbar';
 import ToggleCheckbox from 'popup/components/ToggleCheckbox';
@@ -43,6 +44,36 @@ class About extends Component {
 
   handleLanguageChange = (e) => {
     this.props.syncLanguage(e.target.value);
+  }
+
+  gotoGitHub(e) {
+    e.preventDefault();
+
+    chromep.tabs.create({
+      active: true,
+      selected: true,
+      url: 'https://github.com/yuhlau/iphone-sale-notifier-extension'
+    });
+  }
+
+  gotoSmashicon(e) {
+    e.preventDefault();
+
+    chromep.tabs.create({
+      active: true,
+      selected: true,
+      url: 'https://www.flaticon.com/authors/smashicons'
+    });
+  }
+
+  gotoFlaticon(e) {
+    e.preventDefault();
+
+    chromep.tabs.create({
+      active: true,
+      selected: true,
+      url: 'https://www.flaticon.com'
+    });
   }
 
   componentDidMount() {
@@ -91,6 +122,12 @@ class About extends Component {
             <div style={styles.section}>
               <div style={styles.subheader}>{t('about.introduction.title')}</div>
               <div style={styles.content}>{t('about.introduction.content')}</div>
+              <div style={styles.content}>{
+                reactStringReplace(
+                  t('about.introduction.opensource'), '${GITHUB}', (match, i) => (
+                  <a key="github"style={styles.link} href="#" onClick={this.gotoGitHub}>GitHub</a>
+                ))
+              }</div>
             </div>
             <div style={styles.section}>
               <div style={styles.subheader}>{t('about.attribution.title')}</div>
@@ -98,10 +135,10 @@ class About extends Component {
                 reactStringReplace(
                 reactStringReplace(
                   t('about.attribution.flaticon'), '${SMASHICONS}', (match, i) => (
-                    <a key="smashicons" style={styles.link} href="https://www.flaticon.com/authors/smashicons">Smashicons</a>
+                    <a key="smashicons" style={styles.link} href="#" onClick={this.gotoSmashicon}>Smashicons</a>
                   )
                 ), '${FLATICON}', (match, i) => (
-                  <a key="flaticon" style={styles.link} href="https://www.flaticon.com">www.flaticon.com</a>
+                  <a key="flaticon" style={styles.link} href="#" onClick={this.gotoFlaticon}>www.flaticon.com</a>
                 ))
               }</div>
             </div>
@@ -152,7 +189,7 @@ const styles = {
   link: {
     color: '#4c5b5c',
     outline: 'none',
-    textDecoration: 'none'
+    textDecoration: 'underline'
   }
 }
 

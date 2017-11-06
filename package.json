@@ -1,6 +1,6 @@
 {
   "name": "iphone-in-stock-notifier-extension",
-  "version": "1.0.4",
+  "version": "1.0.8",
   "description": "Help you keep track of iPhone stock status and notify you by browser notification when it is available",
   "main": "app.js",
   "scripts": {

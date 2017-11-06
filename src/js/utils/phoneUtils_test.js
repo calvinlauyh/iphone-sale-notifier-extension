@@ -16,6 +16,6 @@ describe('getPhoneName', () => {
       size: "47",
       capacity: "256"
     }
-    expect(getPhoneName(t, phone)).to.equal('iPhone X 4.7" 256GB')
+    expect(getPhoneName(t, phone)).to.equal('iPhone X 4.7" Space Gray 256GB')
   });
 });
